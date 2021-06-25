@@ -17,10 +17,20 @@ class User(models.Model):
     email = models.EmailField('email')
     register_date = models.DateTimeField('register date', auto_now_add=True)
     update_date = models.DateTimeField('update date')
+    credit = models.IntegerField('credit', default=20)
 
     @property
     def full_name(self):
         return f'{self.first_name} {self.last_name}'
+
+    def delete_user(self):
+        deleted_user = f"user '{self.first_name} {self.last_name}' has been deleted"
+        self.delete()
+        return deleted_user
+
+    def update_credit(self, amount):
+        self.credit += amount
+        self.save()
 
     def __str__(self):
         return f'{self.username} registered at {self.register_date}'
