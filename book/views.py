@@ -1,15 +1,13 @@
 from django.shortcuts import render
+from .models import Book
+
 
 # Create your views here.
-# def add_book(r):
-#     contex = {
-#         {
-#             'title': 'the compound effect',
-#     'authors': 'Darren Hardy',
-#     'release_year':,
-#     'register_date':,
-#     'update_time':,
-#     'book_info':,
-#     'username':,
-#         },
-#     }
+
+
+def show_book(r='s'):
+    context = Book.objects.all()
+    data = {
+        'context': context
+    }
+    return render(r, 'index.html', data)

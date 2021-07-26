@@ -1,9 +1,11 @@
 from django.contrib import admin
-from user.models import User
+from user.models import Profile, Relationship
 
 
 # Register your models here.
-@admin.register(User)
-class UserAdmin(admin.ModelAdmin):
+@admin.register(Profile)
+class ProfileAdmin(admin.ModelAdmin):
     list_display = ['id', 'username']
 
+
+admin.site.register(Relationship)
